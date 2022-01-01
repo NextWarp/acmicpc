@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/1006.js"
+    "start": "APP_ENV=local nodemon src/1006.js"
   },
   "author": "",
   "license": "ISC",
