@@ -1,27 +1,21 @@
 const parseWordToHashMap = (word) => {
     const map = {};
     word.split('').forEach(letter => {
-        if (!map[letter]) {
-            map[letter] = 1;
-            return;
-        }
-        map[letter]++;
+        map[letter] ? map[letter]++ : map[letter] = 1;
     });
-
     return map;
 };
 
 const validAnagram = (firstWord, secondWord) => {
-    
-
     if (firstWord.length !== secondWord.length) return false;
     const firstMap = parseWordToHashMap(firstWord);
-    const secondMap = parseWordToHashMap(secondWord);
-
-    const invalidAnagram = Object.keys(firstMap).some(letter => firstMap[letter] !== secondMap[letter]);
-    const isValidAnagram = !invalidAnagram;
+    const isInvalidAnagram = secondWord.split('').some(letter => {
+        if (!firstMap[letter]) return true;
+        firstMap[letter]--;
+        return false;
+    });
     
-    console.log(isValidAnagram);
+    const isValidAnagram = !isInvalidAnagram;
     return isValidAnagram;
 };
 
