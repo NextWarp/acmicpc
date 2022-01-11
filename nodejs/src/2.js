@@ -9,7 +9,7 @@ function countUniqueValues(values){
         }
     }
 
-    console.log(i);
+    console.log(i + 1);
 }
 
 countUniqueValues([1,1,1,1,1,1,2]);
