@@ -1,17 +1,15 @@
 function countUniqueValues(values){
-    let i = 0;
-    let j = 1;
+    if (values.length <= 0) return 0;
 
-    while (j <= values.length) {
-        if (values[i] === values[j]) {
-            j++
-        } else {
-            i++
+    let i = 0;
+    for (var j = 1; j < values.length; j++) {
+        if (values[i] !== values[j]) {
+            i++;
             values[i] = values[j]
         }
     }
 
-    console.log(i)
+    console.log(i);
 }
 
 countUniqueValues([1,1,1,1,1,1,2]);
