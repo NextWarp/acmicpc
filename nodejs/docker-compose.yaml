@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  study:
+    image: node:16.13.1
+    working_dir: /app
+    volumes:
+      - .:/app
+      - '/app/node_modules'
+    command: sh -c "yarn install && npm start --filename=$$FILENAME"
+    ports:
+      - 8080:8080
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - FILENAME=10
