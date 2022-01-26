@@ -17,8 +17,8 @@ const findPair = (arr, number) => {
 
         if (diff > target) {
             start++;
+            if (end <= start && end < arr.length) end++;
         }
-        console.log(start, end);
     }
 
     console.log(false)
