@@ -9,18 +9,12 @@ const merge = (arr1, arr2, comparator) => {
     while (i < arr1.length && j < arr2.length) {
         const compareResult = comparator(arr1[i], arr2[j]);
         const isLargeI = compareResult > 0;
-        const isLargeJ = compareResult < 0;
         if (isLargeI) {
             result.push(arr2[j]);
             j++;
-        } else if (isLargeJ) {
-            result.push(arr1[i]);
-            i++;
         } else {
             result.push(arr1[i]);
-            result.push(arr2[j]);
             i++;
-            j++;
         }
     }
 
