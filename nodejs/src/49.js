@@ -1,6 +1,45 @@
-function merge() { }
+const merge = (arr1, arr2, comparator) => {
+    if (typeof comparator !== 'function') {
+        comparator = (num1, num2) => num1 - num2;
+    }
+    const result = [];
+    let i = 0;
+    let j = 0;
 
-function mergeSort() { }
+    while (i < arr1.length && j < arr2.length) {
+        const compareResult = comparator(arr1[i], arr2[j]);
+        const isLargeI = compareResult > 0;
+        if (isLargeI) {
+            result.push(arr2[j]);
+            j++;
+        } else {
+            result.push(arr1[i]);
+            i++;
+        }
+    }
+
+    while (i < arr1.length) {
+        result.push(arr1[i])
+        i++;
+    }
+
+    while (j < arr2.length) {
+        result.push(arr2[j])
+        j++;
+    }
+
+    console.log(result);
+    return result;
+}
+
+function mergeSort(arr, comparator) {
+    if (arr.length <= 1) return arr;
+    let mid = Math.floor(arr.length / 2);
+    let left = mergeSort(arr.slice(0, mid), comparator);
+    let right = mergeSort(arr.slice(mid), comparator);
+
+    return merge(left, right, comparator);
+}
 
 mergeSort([4, 20, 12, 10, 7, 9]);
 mergeSort([0, -10, 7, 4]);
